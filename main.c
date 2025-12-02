@@ -4,8 +4,8 @@
 #include "converter.h"
 
 int main(int argc, char *argv[]){
-    struct programm_usage usage;
-    if(!read_cli(argc, argv, &usage)){
+    struct program_usage usage;
+    if(!read_cli(argc, argv, &usage)){ 
         error_CLI();
         return 1;
     }

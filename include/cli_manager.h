@@ -2,6 +2,8 @@
 #define __CLI_MANAGER_H__
 #include "usage.h"
 
-int read_cli(int argc, char *argv[], struct programm_usage * usage);
+//Парсит аргументы командной строки и записывает результат в usage
+//Функция возвращает успешность операции
+int read_cli(int argc, char *argv[], struct program_usage * usage);
 
 #endif

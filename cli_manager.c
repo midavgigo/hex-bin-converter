@@ -12,6 +12,7 @@ const char *commands[3] ={
     "-b"
 };
 
+//Перевести строку в command
 enum command read_command(char * command){
     for(enum command i = 0; i < UNKNOWN; i++){
         if(strcmp(commands[i], command) == 0){
@@ -21,19 +22,19 @@ enum command read_command(char * command){
     return UNKNOWN;
 }
 
-int read_cli(int argc, char *argv[], struct programm_usage * usage){
-    if(argc < 2){
+int read_cli(int argc, char *argv[], struct program_usage * usage){
+    if(argc < 2){ // Не указаны аргументы командной строки
         syntax_error_CLI("Not enough arguments");
         return 0;
     }
     enum command cmd = read_command(argv[1]);
     usage->cmd = cmd;
     usage->filename = 0;
-    if(cmd == HELP){
+    if(cmd == HELP){ // Если передан флаг -h, то следующие аргументы не интересны
         return 1;
     }
-    if(cmd == TO_BIN || cmd == TO_HEX){
-        if(argc < 3){
+    if(cmd != UNKNOWN){
+        if(argc < 3){ // Не указан путь к файлу
             syntax_error_CLI("Not enough arguments for this command");
             return 0;
         }

@@ -4,8 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int convert_file(struct programm_usage usage){
-    if(usage.cmd != TO_HEX && usage.cmd != TO_BIN){
+int convert_file(struct program_usage usage){
+    if(usage.cmd != TO_HEX && usage.cmd != TO_BIN){ // Поступила неизвестная команда или команда HELP
         use_error_CNV();
         return 0;
     }
@@ -52,7 +52,7 @@ int convert_file(struct programm_usage usage){
                 putc(b, writer);
             }else{
                 fseek(writer, -1, SEEK_CUR);
-                b += getc(writer);
+                b += getc(writer); 
                 fseek(writer, -1, SEEK_CUR);
                 putc(b, writer);
             }
