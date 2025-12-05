@@ -36,11 +36,10 @@ int convert_file(struct program_usage usage){
             char b;
             if(c >= '0' && c <= '9'){
                 b = c-'0';
-            }else if((c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f')){
-                if (c >= 'a'){
-                    c -= 'a'-'A';
-                }
-                b = c-'A';
+            }else if(c >= 'A' && c <= 'F'){
+                b = c-'A'+10;
+            }else if(c >= 'a' && c <= 'f'){
+                b = c-'a'+10;
             }else{
                 syntax_error_CNV(ftell(writer));
                 fclose(reader);
